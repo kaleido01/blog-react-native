@@ -3,7 +3,7 @@ import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import BlogContext from "../context/BlogContext";
 
 const IndexScreen = () => {
-  const { blogPosts, setBlogPosts } = React.useContext(BlogContext);
+  const { blogPosts, addPosts } = React.useContext(BlogContext);
   return (
     <View>
       <Text>Index Screen</Text>
@@ -13,14 +13,7 @@ const IndexScreen = () => {
         renderItem={({ item }) => <Text>{item.title}</Text>}
       />
       <View>
-        <TouchableOpacity
-          onPress={() =>
-            setBlogPosts(prev => [
-              ...prev,
-              { title: `title ${prev.length + 1}` }
-            ])
-          }
-        >
+        <TouchableOpacity onPress={() => addPosts()}>
           <Text>add blog post</Text>
         </TouchableOpacity>
       </View>
